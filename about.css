@@ -1,0 +1,42 @@
+#about{
+    background-image: linear-gradient(to bottom, #2a2327, #241f22, #1e1a1e, #181619, #121113, #151416, #171718, #1a1a1b, #252527, #2f3133, #3a3e3f, #464b4b);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+.w3-progress-container{
+    color:lightgray;
+    width:150%;
+    height:1.5em;
+    position:relative;
+}
+.w3-progressbar{
+    background-color:lightgray;
+    height:100%;
+    position:absolute;
+}
+.w3-round-xlarge{
+    border-radius:16px;
+}
+.about{
+    display:grid;
+    grid-template-columns: auto auto;
+}
+.skills{
+    display:flex;
+    flex-direction: column;
+    row-gap: 50px;
+    padding-left: 800px;
+    padding-top: 200px; 
+}
+.skillset{
+    font-weight: 900;
+    color: lightgray;
+}
+.description{
+  color: lightgray;
+  position: absolute;
+  margin-left: 70px;
+  margin-top: 200px;
+  width:40vw;
+}
