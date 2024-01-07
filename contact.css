@@ -1,16 +1,4 @@
-.contact{
-    display:flex;
-    gap:20px;
-    justify-content: center;
-    background-color: #464747;
-}
+
 .logo{
     cursor:pointer;
-}
-.logo:hover{
-    color:rgba(161, 171, 180, 0.27);
-}
-.gmail_logo{
-    padding-top: 0px;
-    margin-top:0;
 }
