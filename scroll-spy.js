@@ -11,12 +11,13 @@ var arrow = document.querySelector('.up-arrow');
 const scroll_effect = async()=>{
     while(true){
         var scrolled = window.scrollY;
-        var height = document.getElementById('header').offsetHeight;
-        if (scrolled<height){
+        var home = document.getElementById('header').offsetHeight;
+        var about = document.getElementById('about').offsetHeight
+        if (scrolled<home){
             button=document.querySelector('.nav-bar ul li:nth-child(1) a');
             // console.log(button.innerHTML);
         }
-        else if(scrolled<2*height){
+        else if(scrolled<home+about-10){
             button=document.querySelector('.nav-bar ul li:nth-child(2) a');
             // console.log(button.innerHTML);
         }
