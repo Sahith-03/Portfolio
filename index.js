@@ -31,24 +31,3 @@ const writer_effect=async()=>{
 };
 
 writer_effect();
-
-
-document.getElementById('Leave-Pred').addEventListener('click',()=>{
-    window.open('https://colab.research.google.com/drive/12jNYTGaNeJ4tLRnITweQDOlL5KdTyU9W#scrollTo=e3ccd219');
-});
-
-document.getElementById('drum').addEventListener('click',()=>{
-    window.open('https://sahith-03.github.io/Drum-Kit/','_blank')
-});
-
-document.getElementById('dict').addEventListener('click',()=>{
-    window.open('https://sahith-03.github.io/Dictionary/','_blank')
-})
-
-document.getElementById('eSign').addEventListener('click',()=>{
-    window.open('https://sahith-03.github.io/e-Signature/','_blank')
-})
-
-document.getElementById('Login').addEventListener('click',()=>{
-    window.open('https://authentication-sahith-03s-projects.vercel.app/','_blank')
-})
