@@ -1,5 +1,29 @@
 const projectsData = [
     {
+        id:"auth",
+        image:"",
+        title: "Authentication",
+        tech: "Python, FastAPI",
+        description: "Authentication System using FastAPI and JWT",
+        url: "https://github.com/Sahith-03/fastapi-auth-service"
+    },
+    {
+        id:"jam",
+        image: "",
+        title: "Browser Jam",
+        tech: "Node.js, Express, PostgreSQL, Socket.IO",
+        description: "An extension that turns any webpage into a real-time collaborative workspace for shared browsing, highlighting, and interaction.",
+        url: "https://github.com/Sahith-03/Browser-Jam"
+    },
+    {
+        id:"broadcast-server",
+        image:"",
+        title: "Broadcast-Server",
+        tech: "Spring Boot, Spring WebSocket",
+        description: "A simple yet powerful real-time broadcast server built with Spring Boot and WebSockets.",
+        url: "https://github.com/Sahith-03/Broadcast-Server"
+    },
+    {
         id:"Scribble",
         image:"./images/scribble.svg",
         title: "Scribble",
@@ -88,7 +112,7 @@ function generateProjectsHTML() {
     projectsData.forEach(project => {
       const projectHTML = `
         <div id="${project.id}" class="project" onclick="window.open('${project.url}', '_blank')">
-          <img src="${project.image}" alt="${project.title} icon">
+          ${project.image && `<img src="${project.image}" alt="${project.title} icon">`}
           <div>
             <h2>${project.title}</h2>
             <p><span>${project.tech}</span><br>
