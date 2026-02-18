@@ -19,7 +19,7 @@ const ProfileCard: React.FC = () => {
                     />
                     <div className="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-white/20 relative z-10 shadow-2xl">
                         <img
-                            src="/images/profile.jpg"
+                            src={`${import.meta.env.BASE_URL}images/profile.jpg`}
                             alt="Krishna Sahith"
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
