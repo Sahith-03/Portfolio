@@ -1,14 +1,23 @@
-const projectsData = [
+export interface Project {
+    id: string;
+    image: string;
+    title: string;
+    tech: string;
+    description: string;
+    url: string;
+}
+
+export const projectsData: Project[] = [
     {
-        id:"auth",
-        image:"",
+        id: "auth",
+        image: "",
         title: "Authentication",
         tech: "Python, FastAPI",
         description: "Authentication System using FastAPI and JWT",
         url: "https://github.com/Sahith-03/fastapi-auth-service"
     },
     {
-        id:"jam",
+        id: "jam",
         image: "",
         title: "Browser Jam",
         tech: "Node.js, Express, PostgreSQL, Socket.IO",
@@ -16,24 +25,24 @@ const projectsData = [
         url: "https://github.com/Sahith-03/Browser-Jam"
     },
     {
-        id:"broadcast-server",
-        image:"",
+        id: "broadcast-server",
+        image: "",
         title: "Broadcast-Server",
         tech: "Spring Boot, Spring WebSocket",
         description: "A simple yet powerful real-time broadcast server built with Spring Boot and WebSockets.",
         url: "https://github.com/Sahith-03/Broadcast-Server"
     },
     {
-        id:"Scribble",
-        image:"./images/scribble.svg",
+        id: "Scribble",
+        image: "./images/scribble.svg",
         title: "Scribble",
         tech: "Built using NextJS, Konva.js, TailwindCSS",
         description: "Interactive Whiteboard Application.(Canvas based)",
         url: "https://github.com/Sahith-03/Scribble"
     },
     {
-        id:"Forms",
-        image:"./images/forms.svg",
+        id: "Forms",
+        image: "./images/forms.svg",
         title: "Dynamic Forms",
         tech: "Built using Sveltekit,MySQL, PrismaORM, Node.js,Express.js",
         description: "Create online forms and surveys with multiple question types.",
@@ -48,8 +57,8 @@ const projectsData = [
         url: "https://sahith-03.github.io/e-Signature/"
     },
     {
-        id:"Github",
-        image:"./images/github.svg",
+        id: "Github",
+        image: "./images/github.svg",
         title: "Github Profile Fetcher",
         tech: "Built using Angular, TailwindCSS, Github REST API",
         description: "Fetches Github details like bio,repositories,tech used for each project of a user",
@@ -72,58 +81,35 @@ const projectsData = [
         url: "https://github.com/Sahith-03/Snake-Game/"
     },
     {
-      id: "Login",
-      image: "./images/Auth.svg",
-      title: "Login-Signup Page",
-      tech: "Built using NextJS, Firebase, TailwindCSS",
-      description: "Allows users to login and signup using GoogleAuth,Email/Password",
-      url: "https://authentication-sahith-03s-projects.vercel.app/"
+        id: "Login",
+        image: "./images/Auth.svg",
+        title: "Login-Signup Page",
+        tech: "Built using NextJS, Firebase, TailwindCSS",
+        description: "Allows users to login and signup using GoogleAuth,Email/Password",
+        url: "https://authentication-sahith-03s-projects.vercel.app/"
     },
     {
-      id: "dict",
-      image: "./images/dictionary.svg",
-      title: "Dictionary",
-      tech: "Built using HTML,CSS,JavaScript.",
-      description: "Uses real-time data as Free Dictionary API is used",
-      url: "https://sahith-03.github.io/Dictionary/"
+        id: "dict",
+        image: "./images/dictionary.svg",
+        title: "Dictionary",
+        tech: "Built using HTML,CSS,JavaScript.",
+        description: "Uses real-time data as Free Dictionary API is used",
+        url: "https://sahith-03.github.io/Dictionary/"
     },
     {
-      id: "drum",
-      image: "./images/drum-icon.svg",
-      title: "Drum-Kit",
-      tech: "Built using HTML,CSS,JavaScript.",
-      description: "Allows users to play drum sounds by clicking on buttons.",
-      url: "https://sahith-03.github.io/Drum-Kit/"
+        id: "drum",
+        image: "./images/drum-icon.svg",
+        title: "Drum-Kit",
+        tech: "Built using HTML,CSS,JavaScript.",
+        description: "Allows users to play drum sounds by clicking on buttons.",
+        url: "https://sahith-03.github.io/Drum-Kit/"
     },
     {
-      id: "Leave-Pred",
-      image: "./images/avatar-icon.svg",
-      title: "Leave Prediction",
-      tech: "Built using Pandas,Seaborn,Scikit-learn libraries of Python.",
-      description: "I predicted student leave based on date, nearby festival, weekend proximity, distance from university, and leave option in the given data.",
-      url: "https://colab.research.google.com/drive/12jNYTGaNeJ4tLRnITweQDOlL5KdTyU9W#scrollTo=e3ccd219"
+        id: "Leave-Pred",
+        image: "./images/avatar-icon.svg",
+        title: "Leave Prediction",
+        tech: "Built using Pandas,Seaborn,Scikit-learn libraries of Python.",
+        description: "I predicted student leave based on date, nearby festival, weekend proximity, distance from university, and leave option in the given data.",
+        url: "https://colab.research.google.com/drive/12jNYTGaNeJ4tLRnITweQDOlL5KdTyU9W#scrollTo=e3ccd219"
     }
 ];
-  
-// Function to generate HTML for projects
-function generateProjectsHTML() {
-    const projectsContainer = document.querySelector('.projects');
-    
-    projectsData.forEach(project => {
-      const projectHTML = `
-        <div id="${project.id}" class="project" onclick="window.open('${project.url}', '_blank')">
-          ${project.image && `<img src="${project.image}" alt="${project.title} icon">`}
-          <div>
-            <h2>${project.title}</h2>
-            <p><span>${project.tech}</span><br>
-              ${project.description}
-            </p>
-          </div>
-          <img src="./images/arrow.svg" alt="" class="arrow">
-        </div>
-      `;
-      projectsContainer.innerHTML += projectHTML;
-    });
-}
-  
-document.addEventListener('DOMContentLoaded', generateProjectsHTML);
