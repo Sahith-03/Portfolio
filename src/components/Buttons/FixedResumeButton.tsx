@@ -20,7 +20,7 @@ const FixedResumeButton: React.FC = () => {
 
                 {/* Button Content */}
                 <a
-                    href="/Krishna_Sahith_Resume (3).pdf"
+                    href={`${import.meta.env.BASE_URL}Krishna_Sahith_Resume (3).pdf`}
                     download="Krishna_Sahith_Resume.pdf"
                     className="inline-flex h-full w-full cursor-pointer items-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-bold text-white backdrop-blur-md transition-colors hover:bg-slate-900 group"
                 >
