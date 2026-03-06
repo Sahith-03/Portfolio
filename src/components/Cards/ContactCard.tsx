@@ -99,7 +99,7 @@ const ContactCard: React.FC = () => {
                                     type="text"
                                     name="user_name"
                                     className={`w-full bg-black/20 border ${errors.user_name ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 focus:bg-white/5 transition-all placeholder:text-gray-600`}
-                                    placeholder="John Doe"
+                                    placeholder="Enter Name"
                                     onChange={() => {
                                         if (errors.user_name) setErrors({ ...errors, user_name: '' })
                                     }}
@@ -112,7 +112,7 @@ const ContactCard: React.FC = () => {
                                     type="email"
                                     name="user_email"
                                     className={`w-full bg-black/20 border ${errors.user_email ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500/50 focus:bg-white/5 transition-all placeholder:text-gray-600`}
-                                    placeholder="john@example.com"
+                                    placeholder="Enter Email"
                                     onChange={() => {
                                         if (errors.user_email) setErrors({ ...errors, user_email: '' })
                                     }}

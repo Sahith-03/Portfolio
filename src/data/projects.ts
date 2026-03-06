@@ -36,7 +36,7 @@ export const projectsData: Project[] = [
         id: "Scribble",
         image: "./images/scribble.svg",
         title: "Scribble",
-        tech: "Built using NextJS, Konva.js, TailwindCSS",
+        tech: "NextJS, Konva.js, TailwindCSS",
         description: "Interactive Whiteboard Application.(Canvas based)",
         url: "https://github.com/Sahith-03/Scribble"
     },
@@ -44,7 +44,7 @@ export const projectsData: Project[] = [
         id: "Forms",
         image: "./images/forms.svg",
         title: "Dynamic Forms",
-        tech: "Built using Sveltekit,MySQL, PrismaORM, Node.js,Express.js",
+        tech: "Sveltekit,MySQL, PrismaORM, Node.js,Express.js",
         description: "Create online forms and surveys with multiple question types.",
         url: "https://github.com/Sahith-03/Forms"
     },
@@ -52,7 +52,7 @@ export const projectsData: Project[] = [
         id: "eSign",
         image: "./images/signature.svg",
         title: "eSignature Maker",
-        tech: "Built using JavaScript,CSS,HTML",
+        tech: "JavaScript,CSS,HTML",
         description: "Draw,edit,download your e-signature. Based on CanvasAPI",
         url: "https://sahith-03.github.io/e-Signature/"
     },
@@ -60,7 +60,7 @@ export const projectsData: Project[] = [
         id: "Github",
         image: "./images/github.svg",
         title: "Github Profile Fetcher",
-        tech: "Built using Angular, TailwindCSS, Github REST API",
+        tech: "Angular, TailwindCSS, Github REST API",
         description: "Fetches Github details like bio,repositories,tech used for each project of a user",
         url: "https://github-profile-fetcher-nine.vercel.app/"
     },
@@ -68,7 +68,7 @@ export const projectsData: Project[] = [
         id: "Pong",
         image: "./images/pong.svg",
         title: "Pong Game",
-        tech: "Built using Python",
+        tech: "Python",
         description: "Multiplayer Pong game based on turtle module and OOPs concept",
         url: "https://github.com/Sahith-03/Pong-Game"
     },
@@ -76,7 +76,7 @@ export const projectsData: Project[] = [
         id: "Snake",
         image: "./images/snake.svg",
         title: "Snake Game",
-        tech: "Built using Python",
+        tech: "Python",
         description: "Classic snake game based on turtle module and OOPs concept",
         url: "https://github.com/Sahith-03/Snake-Game/"
     },
@@ -84,7 +84,7 @@ export const projectsData: Project[] = [
         id: "Login",
         image: "./images/Auth.svg",
         title: "Login-Signup Page",
-        tech: "Built using NextJS, Firebase, TailwindCSS",
+        tech: "NextJS, Firebase, TailwindCSS",
         description: "Allows users to login and signup using GoogleAuth,Email/Password",
         url: "https://authentication-sahith-03s-projects.vercel.app/"
     },
@@ -92,7 +92,7 @@ export const projectsData: Project[] = [
         id: "dict",
         image: "./images/dictionary.svg",
         title: "Dictionary",
-        tech: "Built using HTML,CSS,JavaScript.",
+        tech: "HTML,CSS,JavaScript.",
         description: "Uses real-time data as Free Dictionary API is used",
         url: "https://sahith-03.github.io/Dictionary/"
     },
@@ -100,7 +100,7 @@ export const projectsData: Project[] = [
         id: "drum",
         image: "./images/drum-icon.svg",
         title: "Drum-Kit",
-        tech: "Built using HTML,CSS,JavaScript.",
+        tech: "HTML,CSS,JavaScript.",
         description: "Allows users to play drum sounds by clicking on buttons.",
         url: "https://sahith-03.github.io/Drum-Kit/"
     },
@@ -108,8 +108,52 @@ export const projectsData: Project[] = [
         id: "Leave-Pred",
         image: "./images/avatar-icon.svg",
         title: "Leave Prediction",
-        tech: "Built using Pandas,Seaborn,Scikit-learn libraries of Python.",
+        tech: "Pandas,Seaborn,Scikit-learn libraries of Python.",
         description: "I predicted student leave based on date, nearby festival, weekend proximity, distance from university, and leave option in the given data.",
         url: "https://colab.research.google.com/drive/12jNYTGaNeJ4tLRnITweQDOlL5KdTyU9W#scrollTo=e3ccd219"
     }
 ];
+
+export const fetchGithubProjects = async (tag: string = 'project'): Promise<Project[]> => {
+    try {
+        const response = await fetch('https://api.github.com/users/Sahith-03/repos?per_page=100&sort=created&direction=desc', { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error('Failed to fetch from GitHub API');
+        }
+        const repos = await response.json();
+
+        const filteredRepos = repos.filter((repo: any) => repo.topics && repo.topics.includes(tag));
+
+        // If no repositories have the required tag, fallback to static data
+        if (filteredRepos.length === 0) {
+            console.warn(`No GitHub projects found with tag "${tag}". Falling back to static data.`);
+            return projectsData;
+        }
+
+        return filteredRepos.map((repo: any) => {
+            // Built with: Combine main language with other topics
+            const techArray = [];
+            if (repo.language) techArray.push(repo.language);
+            if (repo.topics) {
+                const otherTopics = repo.topics.filter((t: string) => t !== tag && t !== repo.language?.toLowerCase());
+                techArray.push(...otherTopics);
+            }
+            const tech = techArray.length > 0 ? techArray.join(', ') : 'Various';
+
+            // Format title (replace hyphens and underscores with spaces, capitalize)
+            const title = repo.name.replace(/[-_]/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+
+            return {
+                id: repo.id.toString(),
+                image: '', // Use default blank or map specific icons here
+                title: title,
+                tech: tech, // This goes to the "built with" section
+                description: repo.description || 'No description provided.', // This maps the short description
+                url: repo.homepage || repo.html_url // Use homepage if available, else repo URL
+            };
+        });
+    } catch (error) {
+        console.error("Error fetching GitHub projects:", error);
+        return projectsData; // Fallback to static data on error
+    }
+};

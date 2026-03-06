@@ -11,7 +11,7 @@ const EducationCard: React.FC = () => {
             </div>
             <div className="space-y-4">
                 <div>
-                    <p className="font-bold text-sm text-gray-200">IIITDM Kancheepuram</p>
+                    <p className="font-bold text-sm text-gray-200">IIITDM Kancheepuram (CSE)</p>
                     <p className="text-xs text-gray-400">B.Tech (2021-2025)</p>
                 </div>
                 <div>
